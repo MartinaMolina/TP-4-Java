@@ -11,7 +11,8 @@ public class Funciones {
 
         String[][] pais_ciudad = new String[4][4];
 
-        System.out.println("Introduzca 4 paises y asignele 3 ciudades a cada pais");
+        System.out.println();
+        System.out.println("Introduzca 4 paises y asígnele 3 ciudades a cada pais");
         System.out.println();
 
         // BUCLE PARA INGRESAR 4 PAISES
@@ -91,8 +92,11 @@ public class Funciones {
             System.out.print("País: " + pais_ciudad[i][0] + " - Ciudades: ");
 
             for (int j = 1; j < 4; j++) {
-
-                System.out.print(pais_ciudad[i][j] + " ");
+                if (j < 3) {
+                    System.out.print(pais_ciudad[i][j] + ", ");
+                } else {
+                    System.out.print(pais_ciudad[i][j]);
+                }
             }
 
             System.out.println();
@@ -102,6 +106,7 @@ public class Funciones {
 
     public static void punto2() {
 
+        System.out.println();
         System.out.println("CREE Y LLENE 2 MATRICES: ");
 
         System.out.println("Ingrese un numero entero (num de filas para la matriz 1 y columnas para la matriz 2): ");
@@ -252,7 +257,7 @@ public class Funciones {
 
         // MENÚ
         System.out.println("------------------------------------------------------");
-        
+
         char opcion;
 
         do {
@@ -260,12 +265,12 @@ public class Funciones {
             System.out.println("""
                            Elija la opción que desee:
                            
-                           a) Rellenar TODA la matriz de números, debes pedírselo al usuario.
-                           b) Suma de una fila que se pedirá al usuario (validar que elija una correcta)
-                           c) Suma de una columna que se pedirá al usuario (controlar que elija una correcta)
-                           d) Sumar la diagonal principal
-                           e) Sumar la diagonal inversa
-                           f) La media de todos los valores de la matriz
+                           a) Completar la matriz con números.
+                           b) Sumar una fila.
+                           c) Sumar una columna.
+                           d) Sumar la diagonal principal.
+                           e) Sumar la diagonal inversa.
+                           f) La media de todos los valores de la matriz.
                            g) SALIR
                            """);
 
@@ -297,10 +302,76 @@ public class Funciones {
                 }
             }
         } while (opcion != 'g');
-        
-        
-        
-        
+
+    }
+
+    public static double totalVentas = 0; // Variable estática para mantener el total de ventas (PUNTO 5)
+
+    public static void punto5() {
+
+        String[][] golosinas = {
+            {"KitKat", "32", "10"},
+            {"Chicles", "2", "50"},
+            {"Caramelos de Menta", "2", "50"},
+            {"Huevo Kinder", "25", "10"},
+            {"Chetoos", "30", "10"},
+            {"Twix", "26", "10"},
+            {"M&M'S", "35", "10"},
+            {"Papas Lays", "40", "20"},
+            {"Milkybar", "30", "10"},
+            {"Alfajor Tofi", "20", "15"},
+            {"Lata Coca", "50", "20"},
+            {"Chitos", "45", "10"}
+        };
+
+        // MOSTRAR LA MATRIZ GOLOSINAS
+        System.out.println("----- GOLOSINAS DISPONIBLES -----");
+
+        for (int i = 0; i < golosinas.length; i++) {
+            System.out.println("GOLOSINA: " + golosinas[i][0] + " | PRECIO: $" + golosinas[i][1] + " | STOCK: " + golosinas[i][2]);
+        }
+
+        // MENÚ
+        System.out.println("------------------------------------------------------");
+
+        char opcion;
+        boolean salir = false;
+
+        do {
+            System.out.println("- MENÚ -");
+            System.out.println("""
+                           Elija la opción que desee:
+                           
+                           a) Comprar golosina.
+                           b) Mostrar stock de golosinas.
+                           c) Rellenar golosinas.
+                           d) Apagar maquina.
+                           """);
+
+            opcion = sc.next().charAt(0);
+
+            while (!Character.isLetter(opcion)) {
+                System.out.println("Error! Elija una opcion (a-g)");
+                opcion = sc.next().charAt(0);
+            }
+
+            switch (opcion) {
+                case 'a' -> {
+                    MaquinaExpendedora.a(golosinas);
+                }
+                case 'b' -> {
+                    MaquinaExpendedora.b(golosinas);
+                }
+                case 'c' -> {
+                    MaquinaExpendedora.c(golosinas);
+                }
+                case 'd' -> {
+                    MaquinaExpendedora.d();
+                    salir = true; // Acá sale del menu de opciones
+                }
+            }
+        } while (!salir);
+
     }
 
 }

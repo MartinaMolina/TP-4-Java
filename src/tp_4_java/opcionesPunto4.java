@@ -58,11 +58,11 @@ public class opcionesPunto4 {
 
             // SUMA DE LA FILA
             for (int i = 0; i < x; i++) {
-                sumaFila += matriz[i][fila]; // Sumar el elemento de cada columna en la fila seleccionada
+                sumaFila += matriz[fila][i]; // Sumar el elemento de cada columna en la fila seleccionada
             }
 
             System.out.println("------------------------------------------------------");
-            System.out.println("La suma de la columna " + fila + " es: " + sumaFila);
+            System.out.println("La suma de la fila " + fila + " es: " + sumaFila);
             System.out.println();
         }
 
